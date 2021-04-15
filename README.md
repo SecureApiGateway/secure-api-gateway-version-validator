@@ -5,7 +5,7 @@
 ## Usage
 
 ```yaml
-- uses: secureBankingAccessToolkit/securebanking-version-validator@main
+- uses: secureBankingAccessToolkit/securebanking-version-validator@master
   id: validator
   with:
     binaryVersion: "1.2.3-SNAPSHOT"
