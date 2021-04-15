@@ -1,0 +1,20 @@
+name: "version validator"
+description: "Secure banking helm version validator"
+inputs:
+  binaryVersion:
+    description: "Version of the binary"
+    required: true
+  chartPath:
+    description: "helm chart path"
+    required: true
+outputs:
+  isRelease:
+    description: "If the binary version is semver compliant then it is considered a release"
+  isUpdatedChart:
+    description: "true if the Chart.yaml has been updated with a new version"
+branding:
+  icon: upload
+  color: blue
+runs:
+  using: "node15"
+  main: "dist/index.js"
