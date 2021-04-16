@@ -1,3 +1,3 @@
-const run = require('./version-validator');
+const run = require('./version-validator').run;
 
 run();

@@ -7680,9 +7680,10 @@ module.exports = require("path");;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-const run = __nccwpck_require__(2890);
+const run = __nccwpck_require__(2890).run;
 
 run();
+
 })();
 
 module.exports = __webpack_exports__;
