@@ -7590,7 +7590,7 @@ const run = async () => {
     core.setOutput("isUpdatedChart", false)
   }
 
-  if (semver.valid(binaryVersion) && !updatedChart) {
+  if (semver.satisfies(binaryVersion, 'x.x.x') && !updatedChart) {
     core.info("Valid Release detected.")
     core.setOutput("isRelease", true)
   } else {
