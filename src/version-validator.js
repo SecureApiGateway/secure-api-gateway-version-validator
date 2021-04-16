@@ -34,12 +34,6 @@ const run = async () => {
   chart = loadYamlFile(chartPath)
   updatedChart = updateChart(chartPath, chart, binaryVersion)
 
-  if (updatedChart) {
-    core.setOutput("isUpdatedChart", true)
-  } else {
-    core.setOutput("isUpdatedChart", false)
-  }
-
   if (semver.satisfies(binaryVersion, 'x.x.x') && !updatedChart) {
     core.info("Valid Release detected.")
     core.setOutput("isRelease", true)
@@ -57,9 +51,11 @@ const updateChart = (chartPath, chart, binaryVersion) => {
     chart.appVersion = binaryVersion
     chart.version = semver.valid(semver.coerce(binaryVersion))
     writeFile(chartPath, chart)
+    core.setOutput("isUpdatedChart", true)
     return true
   }
   core.info("Chart appVersion matches binary version. Nothing to do")
+  core.setOutput("isUpdatedChart", false)
   return false
 }
 
