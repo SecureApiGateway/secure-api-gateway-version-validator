@@ -143,4 +143,25 @@ describe('chart test', () => {
 
     expect( process.stdout.write.calledWith('::set-output name=isRelease::false' + os.EOL) ).to.be.true;
   });
+
+  it('should update chart on different snapshot versions', function() {
+    chart = {
+      version: "0.0.1",
+      appVersion: "1.0.2-snapshot"
+    }
+    binaryVersion = "0.0.1-snapshot"
+
+    action.writeFile(writeChartPath, chart)
+    assert.isTrue(fs.existsSync(writeChartPath))
+
+    setInput("chartPath", writeChartPath)
+    setInput("binaryVersion", binaryVersion)
+
+    action.run()
+
+    // isUpdated = process.stdout.write.getCall(5).args[0];
+
+    expect( process.stdout.write.calledWith('::set-output name=isRelease::false' + os.EOL) ).to.be.true;
+    expect( process.stdout.write.calledWith('::set-output name=isUpdatedChart::true' + os.EOL) ).to.be.true;
+  });
 });

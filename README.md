@@ -2,6 +2,8 @@
 
 > A GitHub Action for comparing the binary version to the helm Chart version and determines if the service is ready for release
 
+The helm chart `appVersion` should always match the service pom version. Eg if a pom version is 1.0.0-SNAPSHOT and the `appVersion` is 0.9.1 then the chart yaml will be changed to match the pom.
+
 ## Usage
 
 ```yaml
